@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <style>
+    .avatar-preview {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #4a6fa5;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0 auto 15px;
+    }
+    #registerForm {
+      display: none;
+    }
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-card" id="loginForm">
+      <h2>Welcome Back</h2>
+      <p>Please login to your account</p>
+      <form id="loginFormElement">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required />
+        <button type="submit">Login</button>
+      </form>
+      <div class="footer-text">
+        <p>Don't have an account? <a href="#" id="showRegister">Register</a></p>
+      </div>
+    </div>
+
+    <div class="login-card" id="registerForm">
+      <h2>Create Account</h2>
+      <p>Please register to continue</p>
+      <form id="registrationForm">
+        <div id="avatarPreview" class="avatar-preview">?</div>
+        <input type="hidden" id="avatarData" name="avatar">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your Name" required />
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" placeholder="you@example.com" required />
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" placeholder="••••••••" required />
+        <div class="form-actions">
+          <button type="button" id="cancelRegister">Cancel</button>
+          <button type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function generateAvatar(name) {
+      const avatarPreview = document.getElementById('avatarPreview');
+      const canvas = document.createElement('canvas');
+      canvas.width = 200;
+      canvas.height = 200;
+      const ctx = canvas.getContext('2d');
+      const initial = name.trim().charAt(0).toUpperCase();
+      avatarPreview.textContent = initial;
+      const colors = ['#4a6fa5', '#166088', '#4fc3a1', '#7b4b94', '#d45d79'];
+      const colorIndex = initial.charCodeAt(0) % colors.length;
+      const bgColor = colors[colorIndex];
+      ctx.beginPath();
+      ctx.arc(100, 100, 100, 0, Math.PI * 2);
+      ctx.fillStyle = bgColor;
+      ctx.fill();
+      ctx.font = 'bold 80px Arial';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(initial, 100, 100);
+      document.getElementById('avatarData').value = canvas.toDataURL();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('showRegister').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registerForm').style.display = 'block';
+      });
+      
+      document.getElementById('cancelRegister').addEventListener('click', () => {
+        document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+      });
+      
+      document.getElementById('name').addEventListener('input', (e) => {
+        if(e.target.value.trim().length > 0) {
+          generateAvatar(e.target.value);
+        } else {
+          document.getElementById('avatarPreview').textContent = '?';
+          document.getElementById('avatarData').value = '';
+        }
+      });
+      
+      document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const password = document.getElementById('regPassword').value;
+        const avatar = document.getElementById('avatarData').value;
+        
+        try {
+          Swal.fire({
+            title: "Creating account...",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+          });
+          
+          const response = await fetch("http://localhost:4000/api/user/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              password,
+              avatar
+            })
+          });
+          
+          const data = await response.json();
+          
+          if (!response.ok) {
+            throw new Error(data.msg || "Registration failed");
+          }
+          
+          Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "Account created successfully",
+            willClose: () => {
+              document.getElementById('registerForm').style.display = 'none';
+              document.getElementById('loginForm').style.display = 'block';
+              document.getElementById('registrationForm').reset();
+            }
+          });
+          
+        } catch (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: error.message || "Failed to create account"
+          });
+        }
+      });
+      
+      document.getElementById('loginFormElement').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        try {
+          Swal.fire({
+            title: "Iniciando sesión...",
+            allowOutsideClick: false,
+            didOpen: () => {
+              Swal.showLoading();
+            }
+          });
+
+          if (!email.value.trim() || !password.value) {
+            throw new Error("Por favor completa todos los campos");
+          }
+
+          const response = await fetch("http://localhost:4000/api/user/login", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              email: email.value.trim(),
+              password: password.value
+            })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            const errorMsg = data.msg || "Credenciales incorrectas";
+            throw new Error(errorMsg);
+          }
+
+          Swal.fire({
+            icon: "success",
+            title: "¡Bienvenido!",
+            text: data.message || "Inicio de sesión exitoso",
+            timer: 2000,
+            showConfirmButton: false,
+            willClose: () => {
+              window.location.href = data.redirectTo || "../private/dashboard.html";
+            }
+          });
+
+        } catch (error) {
+          Swal.close();
+          let errorMessage = "Error al iniciar sesión";
+
+          if (error.message.includes("Failed to fetch")) {
+            errorMessage = "No se pudo conectar al servidor. Verifica tu conexión.";
+          } else if (error.message) {
+            errorMessage = error.message;
+          }
+
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: errorMessage,
+            confirmButtonText: "Entendido"
+          });
+
+          password.value = "";
+        }
+      });
+
+      const logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', async function () {
+          Swal.fire({
+            title: "Cerrando sesión...",
+            allowOutsideClick: false,
+            didOpen: () => {
+              Swal.showLoading();
+            }
+          });
+
+          try {
+            const res = await fetch('http://localhost:4000/api/user/logout', {
+              method: 'POST',
+              credentials: 'include'
+            });
+
+            if (res.ok) {
+              const data = await res.json();
+
+              Swal.fire({
+                icon: 'success',
+                title: data.message || "Sesión cerrada correctamente",
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+              setTimeout(() => {
+                window.location.href = '../public/index.html';
+              }, 1600);
+
+            } else {
+              const errorData = await res.json();
+              throw new Error(errorData.message || 'Error al cerrar sesión');
+            }
+
+          } catch (error) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: error.message || 'Error inesperado al cerrar sesión'
+            });
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
