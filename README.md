@@ -106,7 +106,7 @@ Esto nos ayudó a dividir eficientemente el trabajo y mantener una visión clara
 ## 👥 Roles del Equipo
 
 - **Juan y Marina**: Desarrollo completo del **backend**, incluyendo autenticación, rutas protegidas, validaciones, conexión a MongoDB y documentación.
-- **Nikol y Nicole**: Encargadas del **frontend**, diseño visual del sistema, vistas públicas y privadas, y conexión con el backend.
+- **Nikole y Nikol**: Encargadas del **frontend**, diseño visual del sistema, vistas públicas y privadas, y conexión con el backend.
 
 Cada integrante trabajó en su **propia rama** dentro del repositorio, facilitando la integración mediante *pull requests* y revisiones colaborativas.
 
