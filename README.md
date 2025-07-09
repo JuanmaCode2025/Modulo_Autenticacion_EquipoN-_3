@@ -5,7 +5,7 @@
 - **Juan Manuel Mejía** – Backend  
 - **Marina Gómez** – Backend  
 - **Nikol Soto** – Frontend  
-- **Nicole [Apellido]** – Frontend
+- **Nikol Ballesteros** – Frontend
 
 ---
 
