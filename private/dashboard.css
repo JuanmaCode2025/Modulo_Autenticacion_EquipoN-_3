@@ -1,27 +1,21 @@
 /* Reset y Variables de Color */
 :root {
-  /* Paleta principal (basada en tu login) */
   --primary: #6f42c1;
   --primary-light: #9d83ce;
   --primary-dark: #4b42f1;
   --secondary: #4f46e5;
   --secondary-dark: #3730a3;
-
-  /* Neutros */
   --text-dark: #1e293b;
   --text-medium: #334155;
   --text-light: #64748b;
   --bg-light: #f3f4f6;
   --bg-lighter: #f8fafc;
   --white: #ffffff;
-
-  /* Éxitos/Alertas */
   --success: #10b981;
   --warning: #f59e0b;
   --danger: #ef4444;
 }
 
-/* Reset General */
 * {
   margin: 0;
   padding: 0;
@@ -29,20 +23,18 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-light);
+  font-family: system-ui;
+  background: linear-gradient(to bottom right, #eef1f5, #dce3ed);
   color: var(--text-dark);
   line-height: 1.6;
 }
 
-/* Layout Principal */
 .dashboard-container {
   display: grid;
   grid-template-columns: 280px 1fr;
   min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
   background: linear-gradient(160deg, var(--primary), var(--primary-dark));
   color: var(--white);
@@ -113,7 +105,6 @@ body {
   text-align: center;
 }
 
-/* Contenido Principal */
 .main-content {
   padding: 2rem;
   background-color: var(--bg-lighter);
@@ -152,24 +143,26 @@ body {
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
 }
 
-/* Grid del Dashboard */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .card {
   background: var(--white);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card h2 {
@@ -182,20 +175,22 @@ body {
   gap: 8px;
 }
 
-/* Estilos Específicos para Cada Sección */
 .earnings {
+  background: var(--secondary);
+  color: white;
+  text-align: center;
   border-left: 4px solid var(--success);
 }
 
 .earnings .amount {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #008F39;
+  color: #ffffff;
   margin: 1rem 0;
 }
 
 .tax-info {
-  color: var(--text-light);
+  color: #c2c9ff;
   font-size: 0.9rem;
 }
 
@@ -204,35 +199,56 @@ body {
 }
 
 .invoices .invoice-list li {
-  padding: 0.8rem 0;
-  border-bottom: 1px solid var(--bg-light);
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  background: #f8f9fb;
   display: flex;
   justify-content: space-between;
+  border-radius: 10px;
 }
 
-.invoices .invoice-list li:last-child {
-  border-bottom: none;
+.invoice-list li span.status {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.invoice-list li span.paid {
+  background: #dcfce7;
+  color: #22c55e;
+}
+
+.invoice-list li span.late {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.engagement {
+  text-align: center;
+  background: #111827;
+  color: white;
 }
 
 .engagement .engagement-list {
   list-style: none;
 }
 
-.engagement .engagement-list li {
-  padding: 0.8rem 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.engagement .engagement-list i {
-  color: var(--secondary);
+.engagement .join-btn {
+  background: #4f46e5;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .rank .rank-info {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--secondary);
   text-align: center;
   margin: 1rem 0;
 }
@@ -263,25 +279,48 @@ body {
 }
 
 .project-list li {
-  padding: 0.8rem 0;
+  padding: 0.8rem 1rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  background: #f8f9fb;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 .project-list li::before {
   content: "•";
   color: var(--primary);
   font-size: 1.5rem;
+  margin-right: 8px;
 }
 
 .recommended {
-  background: linear-gradient(135deg, var(--primary-light), var(--primary));
-  color: var(--white);
+  background: #f9fafc;
+  color: var(--text-dark);
 }
 
-.recommended h2 {
-  color: var(--white);
+.recommended-project {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.recommended-project .tag {
+  background: var(--secondary);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  width: fit-content;
+}
+
+.recommended-project .price {
+  font-weight: bold;
+  color: var(--text-dark);
 }
 
 .leadership .tasks {
@@ -294,39 +333,80 @@ body {
   align-items: center;
   gap: 10px;
 }
+.user-role {
+  background: #4f46e5;
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: white;
+  font-weight: 500;
+}
+
+.main-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  padding: 0.8rem 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 2rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+}
+
+.sidebar-footer .help-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sidebar-footer .help-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 
 .leadership .tasks li.completed {
   color: var(--text-light);
   text-decoration: line-through;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .dashboard-container {
     grid-template-columns: 1fr;
   }
-  
   .sidebar {
     width: 100%;
     padding: 1.5rem;
   }
-  
   .main-content {
     padding: 1.5rem;
   }
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.card {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-/* Retrasos para el efecto cascada */
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.2s; }
 .card:nth-child(3) { animation-delay: 0.3s; }
