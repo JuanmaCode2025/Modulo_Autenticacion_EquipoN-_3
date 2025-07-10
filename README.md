@@ -85,7 +85,8 @@ Cada integrante trabajó en su **propia rama** dentro del repositorio, facilitan
 
 
 ---
-##📷 Capturas del Proyecto 
+## 📷 Capturas del Proyecto 
+
 Imágenes del diseño final y estructura final.
 ![image](https://github.com/user-attachments/assets/37661892-04c1-4eef-8072-7bde77528553)
 ![image](https://github.com/user-attachments/assets/e8821155-5cb2-4601-bde9-3b609ed4991f)
