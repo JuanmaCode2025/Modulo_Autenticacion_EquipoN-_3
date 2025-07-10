@@ -51,9 +51,11 @@ Optamos por la vista tipo **Board (Tablero Kanban)**, estructurado en las siguie
 - **En pruebas (Testing)**  
 - **Terminado (Done)**
 
-Esto nos permitió implementar una **metodología ágil tipo Kanban**, facilitando la colaboración entre los integrantes y manteniendo un flujo de trabajo claro y transparente.
 
 ![image](https://github.com/user-attachments/assets/56ebea05-5841-4e72-ba9c-80d044cda152)
+
+---
+Esto nos permitió implementar una **metodología ágil tipo Kanban**, facilitando la colaboración entre los integrantes y manteniendo un flujo de trabajo claro y transparente.
 
 
 ---
@@ -73,10 +75,13 @@ Esto nos ayudó a dividir eficientemente el trabajo y mantener una visión clara
 ---
 
 
+
 #🧠 Ramas 
+
 ![image](https://github.com/user-attachments/assets/a653860d-df0e-4c8a-b478-ba354aff1caa)
 
 Cada integrante trabajó en su **propia rama** dentro del repositorio, facilitando la integración mediante *pull requests* y revisiones colaborativas.
+
 
 ---
 📷 Capturas del Proyecto 
