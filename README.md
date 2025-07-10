@@ -38,7 +38,9 @@ A lo largo del proyecto, también se pondrá especial énfasis en buenas prácti
 - **JWT** – (opcional si se usa en `tokens.js`) para autenticación segura  
 
 ---
-![image](https://github.com/user-attachments/assets/33fe8ff8-906c-4a10-9937-705148cffb79)
+## 🗂️ Estructura de Archivos
+![image](https://github.com/user-attachments/assets/c13446fa-68d4-4633-96ef-808ac0c514e5)
+
 ---
 
 ## 🌍 Gestión del Proyecto con GitHub Projects
