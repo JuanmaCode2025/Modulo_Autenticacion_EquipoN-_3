@@ -1,2 +1,7 @@
+# .gitignore
+
+# Ignorar archivos de entorno
 .env
+
+# Ignorar la carpeta de dependencias
 node_modules/
