@@ -71,6 +71,8 @@ Esto nos ayudó a dividir eficientemente el trabajo y mantener una visión clara
 ![image](https://github.com/user-attachments/assets/ca02f659-8669-4a6f-a8a0-7189fce7a686)
 
 ---
+
+
 #🧠 Ramas 
 ![image](https://github.com/user-attachments/assets/a653860d-df0e-4c8a-b478-ba354aff1caa)
 
