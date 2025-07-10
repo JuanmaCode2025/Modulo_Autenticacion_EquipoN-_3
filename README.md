@@ -29,45 +29,7 @@ El objetivo principal es demostrar cómo gestionar un proyecto real en GitHub de
 - **JWT** – (opcional si se usa en `tokens.js`) para autenticación segura  
 
 ---
-
-## 📁 Estructura del Proyecto
-
-│
-├── controllers/ # Lógica de negocio del backend
-│ ├── dashboard.js
-│ └── user.js
-│
-├── DB/ # Configuración de la base de datos
-│ ├── database.js
-│ └── tokens.js
-│
-├── middlewares/ # Middlewares personalizados de Express
-│ └── auth.js
-│
-├── models/ # Modelos de datos con Mongoose
-│ ├── dashboard.js
-│ └── user.js
-│
-├── private/ # Vistas privadas (solo para usuarios logueados)
-│ ├── dashboard.html
-│ └── dashboard.css
-│
-├── public/ # Archivos públicos accesibles desde el navegador
-│ ├── index.html
-│ ├── login.css
-│ └── registro/
-│
-├── router/ # Definición de rutas
-│ ├── dashboard.js
-│ └── user.js
-│
-├── .env
-├── app.js
-├── package.json
-├── package-lock.json
-└── README.md
-
-
+![image](https://github.com/user-attachments/assets/33fe8ff8-906c-4a10-9937-705148cffb79)
 ---
 
 ## 🌍 Gestión del Proyecto con GitHub Projects
