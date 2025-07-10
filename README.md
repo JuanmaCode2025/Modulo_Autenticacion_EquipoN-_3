@@ -16,7 +16,7 @@ Este proyecto es una guía práctica desarrollada mediante **GitHub Projects**, 
 A lo largo del desarrollo se aplicaron buenas prácticas de programación, organización de tareas, control de versiones y trabajo colaborativo mediante herramientas nativas de GitHub como **Issues**, **Commits estructurados** y **Tableros Kanban**.
 
 
-🚀 Objetivo
+##🚀 Objetivo
 El objetivo principal de este proyecto es demostrar de manera completa y práctica cómo gestionar un desarrollo real utilizando GitHub como plataforma central de control de versiones y colaboración. Se abordará todo el ciclo de vida del proyecto, desde la planificación inicial, pasando por el diseño de la arquitectura, el desarrollo iterativo del código, hasta la implementación final del producto.
 
 Durante el proceso, se integrarán funcionalidades esenciales en aplicaciones web modernas, como lo es la autenticación de usuarios , permitiendo que los visitantes puedan registrarse, iniciar sesión y gestionar sus perfiles. Además, se implementarán vistas privadas , las cuales solo serán accesibles para usuarios autenticados, garantizando así una correcta gestión del contenido sensible o exclusivo.
@@ -76,7 +76,7 @@ Esto nos ayudó a dividir eficientemente el trabajo y mantener una visión clara
 
 
 
-#🧠 Ramas 
+##🧠 Ramas 
 
 ![image](https://github.com/user-attachments/assets/a653860d-df0e-4c8a-b478-ba354aff1caa)
 
@@ -84,7 +84,7 @@ Cada integrante trabajó en su **propia rama** dentro del repositorio, facilitan
 
 
 ---
-📷 Capturas del Proyecto 
+##📷 Capturas del Proyecto 
 Imágenes del diseño final y estructura final.
 ![image](https://github.com/user-attachments/assets/37661892-04c1-4eef-8072-7bde77528553)
 ![image](https://github.com/user-attachments/assets/e8821155-5cb2-4601-bde9-3b609ed4991f)
